@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Control - Agenda</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container { max-width: 800px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #2c3e50; color: white; }
+        .estado-pendiente { color: #e67e22; font-weight: bold; }
+        .estado-confirmado { color: #27ae60; font-weight: bold; }
+        .estado-cancelado { color: #c0392b; font-weight: bold; }
+        .btn-accion { padding: 6px 10px; font-size: 12px; margin-right: 5px; background-color: #3498db; }
+        .btn-accion:hover { background-color: #2980b9; }
+        .btn-cancelar { background-color: #e74c3c; }
+        .btn-cancelar:hover { background-color: #c0392b; }
+        .oculto {
+    display: none !important;
+}
+
+/* ===== ESTILOS DEL BUSCADOR DEL ADMIN ===== */
+.buscador-admin {
+    width: 100%;
+    padding: 14px 15px; 
+    background-color: #111111;
+    color: #ffffff;
+    border: 1px solid #005c99; 
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.buscador-admin:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); 
+    background-color: #161a20;
+}
+
+
+/* ===== ESTILOS PARA LAS NOTAS ===== */
+.input-nota {
+    width: 100%;
+    min-height: 50px;
+    background-color: #1a1a1a;
+    color: #00d2ff;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 13px;
+    resize: vertical; /* Permite hacerla más grande jalando la esquina */
+    box-sizing: border-box;
+}
+.input-nota:focus {
+    border-color: #f39c12;
+    outline: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="container admin-container">
+        <header>
+            <h1>Agenda del Día 📅</h1>
+            <p>Aquí puedes ver todos los turnos solicitados por los clientes.</p>
+        </header>
+
+        <div id="cargando">Cargando turnos desde la base de datos...</div>
+
+        <div style="margin-bottom: 20px;">
+    <input type="text" id="buscador-clientes" placeholder="🔍 Buscar cliente por nombre, fecha o servicio..." class="buscador-admin">
+</div>
+
+        <table id="tabla-turnos" class="oculto">
+            <thead>
+                <tr>
+                    <th>Fecha y Hora</th>
+                    <th>Cliente</th>
+                    <th>Servicio</th>
+                    <th>Teléfono</th>
+                    <th>Estado</th>
+                    <th>Notas Privadas 📝</th> <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="lista-turnos">
+                </tbody>
+        </table>
+        
+        <div style="margin-top: 20px; text-align: center;">
+             <a href="index.html" style="color: #7f8c8d; text-decoration: none; font-size: 14px;">Volver a la vista de cliente</a>
+        </div>
+    </div>
+
+    <script type="module" src="admin.js"></script>
+</body>
+</html>
